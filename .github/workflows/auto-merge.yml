@@ -1,4 +1,4 @@
-name: Auto Merge Main to Testing
+name: Auto Merge Main to Tester
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.name 'Bhargav055'
           git config --global user.email 'bhargavseethamsetti@gmail.com'
-          git remote set-url origin https://x-access-token:${{secrets.ACTION_PAT}}@github.com/Bhargav055/mern.git
+          git remote set-url origin https://x-access-token:${{secrets.ACTION_PAT}}@github.com/Bhargav055/mern-client.git
 
       - name: Fetch all branches
         run: git fetch origin
