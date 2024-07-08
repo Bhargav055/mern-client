@@ -10,6 +10,9 @@ const VirtualRoot = ReactDOM.createRoot(root);
 VirtualRoot.render(
   <div>
     <h1>Hii Bhargav</h1>
+    <h2>
+      hii
+    </h2>
     <App />
   </div>
 );
