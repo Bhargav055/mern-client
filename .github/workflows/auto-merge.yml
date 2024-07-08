@@ -1,0 +1,32 @@
+name: Auto Merge Main to Tester
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{secrets.ACTION_PAT}}
+          persist-credentials: false
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'Bhargav055'
+          git config --global user.email 'bhargavseethamsetti@gmail.com'
+          git remote set-url origin https://x-access-token:${{secrets.ACTION_PAT}}@github.com/Bhargav055/mern-client.git
+
+      - name: Fetch all branches
+        run: git fetch origin
+
+      - name: Merge main into Tester
+        run: |
+          git checkout Tester
+          git merge -X theirs origin/main --allow-unrelated-histories
+          git push origin Tester
